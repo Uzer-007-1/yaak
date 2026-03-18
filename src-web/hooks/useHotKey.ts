@@ -7,7 +7,7 @@ import { capitalize } from "../lib/capitalize";
 import { jotaiStore } from "../lib/jotai";
 
 const HOLD_KEYS = ["Shift", "Control", "Command", "Alt", "Meta"];
-const SINGLE_WHITELIST = ["Удалить", "Enter", "Backspace"];
+const SINGLE_WHITELIST = ["Delete", "Enter", "Backspace"];
 
 export type HotkeyAction =
   | "app.zoom_in"
@@ -57,7 +57,7 @@ const defaultHotkeysMac: Record<HotkeyAction, string[]> = {
   "sidebar.filter": ["Meta+f"],
   "sidebar.expand_all": ["Meta+Shift+Equal"],
   "sidebar.collapse_all": ["Meta+Shift+Minus"],
-  "sidebar.selected.delete": ["Удалить", "Meta+Backspace"],
+  "sidebar.selected.delete": ["Delete", "Meta+Backspace"],
   "sidebar.selected.duplicate": ["Meta+d"],
   "sidebar.selected.move": [],
   "sidebar.selected.rename": ["Enter"],
@@ -87,7 +87,7 @@ const defaultHotkeysOther: Record<HotkeyAction, string[]> = {
   "sidebar.filter": ["Control+f"],
   "sidebar.expand_all": ["Control+Shift+Equal"],
   "sidebar.collapse_all": ["Control+Shift+Minus"],
-  "sidebar.selected.delete": ["Удалить", "Control+Backspace"],
+  "sidebar.selected.delete": ["Delete", "Control+Backspace"],
   "sidebar.selected.duplicate": ["Control+d"],
   "sidebar.selected.move": [],
   "sidebar.selected.rename": ["Enter"],

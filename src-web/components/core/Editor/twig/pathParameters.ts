@@ -50,7 +50,7 @@ function pathParameters(
       from,
       to,
       enter(node) {
-        if (node.name === "Текст") {
+        if (node.name === "Text") {
           // Find the `url` node and then jump into it to find the placeholders
           for (let i = node.from; i < node.to; i++) {
             const innerTree = syntaxTree(view.state).resolveInner(i);
