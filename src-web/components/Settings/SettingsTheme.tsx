@@ -72,11 +72,11 @@ export function SettingsTheme() {
   return (
     <VStack space={3} className="mb-4">
       <div className="mb-3">
-        <Heading>Theme</Heading>
+        <Heading>Тема</Heading>
         <p className="text-text-subtle">
-          Make Yaak your own by selecting a theme, or{" "}
+          Настройте Yaak под себя, выбрав тему, или{" "}
           <Link href="https://yaak.app/docs/plugin-development/plugins-quick-start">
-            Create Your Own
+            создайте свою
           </Link>
         </p>
       </div>
@@ -129,7 +129,7 @@ export function SettingsTheme() {
         <HStack className="text" space={1.5}>
           <Icon icon={appearance === "dark" ? "moon" : "sun"} />
           <strong>{activeTheme.data.active.label}</strong>
-          <em>(preview)</em>
+          <em>(предпросмотр)</em>
         </HStack>
         <HStack space={1.5} className="w-full">
           {buttonColors.map((c, i) => (

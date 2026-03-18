@@ -15,7 +15,7 @@ export function SettingsProxy() {
   return (
     <VStack space={1.5} className="mb-4">
       <div className="mb-3">
-        <Heading>Proxy</Heading>
+        <Heading>Прокси</Heading>
         <p className="text-text-subtle">
           Configure a proxy server for HTTP requests. Useful for corporate firewalls, debugging
           traffic, or routing through specific infrastructure.

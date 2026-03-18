@@ -27,7 +27,7 @@ export function ResponseHeaders({ response }: Props) {
   );
   return (
     <div className="overflow-auto h-full pb-4 gap-y-3 flex flex-col pr-0.5">
-      <DetailsBanner storageKey={`${response.requestId}.general`} summary={<h2>Info</h2>}>
+      <DetailsBanner storageKey={`${response.requestId}.general`} summary={<h2>Инфо</h2>}>
         <KeyValueRows>
           <KeyValueRow labelColor="secondary" label="URL запроса">
             <div className="flex items-center gap-1">
@@ -53,7 +53,7 @@ export function ResponseHeaders({ response }: Props) {
         storageKey={`${response.requestId}.request_headers`}
         summary={
           <h2 className="flex items-center">
-            Request Headers <CountBadge showZero count={requestHeaders.length} />
+            Заголовки запроса <CountBadge showZero count={requestHeaders.length} />
           </h2>
         }
       >
@@ -75,7 +75,7 @@ export function ResponseHeaders({ response }: Props) {
         storageKey={`${response.requestId}.response_headers`}
         summary={
           <h2 className="flex items-center">
-            Response Headers <CountBadge showZero count={responseHeaders.length} />
+            Заголовки ответа <CountBadge showZero count={responseHeaders.length} />
           </h2>
         }
       >
@@ -97,5 +97,5 @@ export function ResponseHeaders({ response }: Props) {
 }
 
 function NoHeaders() {
-  return <span className="text-text-subtlest text-sm italic">No Headers</span>;
+  return <span className="text-text-subtlest text-sm italic">Нет заголовков</span>;
 }

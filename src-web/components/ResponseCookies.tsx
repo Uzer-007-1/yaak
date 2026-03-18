@@ -121,7 +121,7 @@ export function ResponseCookies({ response }: Props) {
         storageKey={`${response.requestId}.sent_cookies`}
         summary={
           <h2 className="flex items-center">
-            Sent Cookies <CountBadge showZero count={sentCookies.length} />
+            Отправленные cookie <CountBadge showZero count={sentCookies.length} />
           </h2>
         }
       >
@@ -144,7 +144,7 @@ export function ResponseCookies({ response }: Props) {
         storageKey={`${response.requestId}.received_cookies`}
         summary={
           <h2 className="flex items-center">
-            Received Cookies <CountBadge showZero count={receivedCookies.length} />
+            Полученные cookie <CountBadge showZero count={receivedCookies.length} />
           </h2>
         }
       >
@@ -168,7 +168,7 @@ export function ResponseCookies({ response }: Props) {
                   </span>
                   {cookie.isDeleted && (
                     <span className="text-xs font-sans text-danger bg-danger/10 px-1.5 py-0.5 rounded">
-                      Deleted
+                      Удалено
                     </span>
                   )}
                 </div>
@@ -221,5 +221,5 @@ export function ResponseCookies({ response }: Props) {
 }
 
 function NoCookies() {
-  return <span className="text-text-subtlest text-sm italic">No Cookies</span>;
+  return <span className="text-text-subtlest text-sm italic">Нет cookie</span>;
 }
