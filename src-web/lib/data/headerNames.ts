@@ -44,7 +44,7 @@ export const headerNames: (GenericCompletionOption | string)[] = [
   },
   "Cache-Control",
   "Cookie",
-  "соединение",
+  "Connection",
   "Content-MD5",
   "Date",
   "Expect",
