@@ -23,19 +23,15 @@ jobs:
             bundle_target: msi
             artifact_name: yaak-windows-msi
             artifact_glob: target/release/bundle/msi/*.msi
-<<<<<<< sjdvcq-codex/automate-build-process-for-windows-and-linux
             tauri_args: --config ./crates-tauri/yaak-app/tauri.windows.msi.conf.json
-=======
->>>>>>> main
+
           - name: Linux DEB
             runs_on: ubuntu-22.04
             bundle_target: deb
             artifact_name: yaak-linux-deb
             artifact_glob: target/release/bundle/deb/*.deb
-<<<<<<< sjdvcq-codex/automate-build-process-for-windows-and-linux
             tauri_args: ""
-=======
->>>>>>> main
+
 
     steps:
       - name: Checkout
@@ -74,11 +70,9 @@ jobs:
         run: npm run bootstrap
 
       - name: Build ${{ matrix.bundle_target }} installer
-<<<<<<< sjdvcq-codex/automate-build-process-for-windows-and-linux
-        run: npx tauri build --bundles ${{ matrix.bundle_target }} ${{ matrix.tauri_args }}
-=======
         run: npx tauri build --bundles ${{ matrix.bundle_target }}
->>>>>>> main
+        run: npx tauri build --bundles ${{ matrix.bundle_target }} ${{ matrix.tauri_args }}
+
 
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
