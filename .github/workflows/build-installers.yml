@@ -1,0 +1,78 @@
+name: Build Desktop Installers
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-installers:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runs_on }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows MSI
+            runs_on: windows-latest
+            bundle_target: msi
+            artifact_name: yaak-windows-msi
+            artifact_glob: target/release/bundle/msi/*.msi
+            tauri_args: --config ./crates-tauri/yaak-app/tauri.windows.msi.conf.json
+          - name: Linux DEB
+            runs_on: ubuntu-22.04
+            bundle_target: deb
+            artifact_name: yaak-linux-deb
+            artifact_glob: target/release/bundle/deb/*.deb
+            tauri_args: ""
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          node-version: "24"
+          cache: true
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Restore Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: build-installers
+          cache-on-failure: true
+
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf xdg-utils
+
+      - name: Install Protoc for plugin-runtime
+        uses: arduino/setup-protoc@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: vp install
+
+      - name: Bootstrap
+        run: npm run bootstrap
+
+      - name: Build ${{ matrix.bundle_target }} installer
+        run: npx tauri build --bundles ${{ matrix.bundle_target }} ${{ matrix.tauri_args }}
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.artifact_glob }}
+          if-no-files-found: error
