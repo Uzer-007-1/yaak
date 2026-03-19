@@ -1,0 +1,13 @@
+{
+  "bundle": {
+    "windows": {
+      "wix": {
+        "language": {
+          "ru-RU": {
+            "localePath": "./windows/wix/ru-RU.wxl"
+          }
+        }
+      }
+    }
+  }
+}

@@ -23,11 +23,15 @@ jobs:
             bundle_target: msi
             artifact_name: yaak-windows-msi
             artifact_glob: target/release/bundle/msi/*.msi
+            tauri_args: --config ./crates-tauri/yaak-app/tauri.windows.msi.conf.json
+
           - name: Linux DEB
             runs_on: ubuntu-22.04
             bundle_target: deb
             artifact_name: yaak-linux-deb
             artifact_glob: target/release/bundle/deb/*.deb
+            tauri_args: ""
+
 
     steps:
       - name: Checkout
@@ -67,6 +71,8 @@ jobs:
 
       - name: Build ${{ matrix.bundle_target }} installer
         run: npx tauri build --bundles ${{ matrix.bundle_target }}
+        run: npx tauri build --bundles ${{ matrix.bundle_target }} ${{ matrix.tauri_args }}
+
 
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
