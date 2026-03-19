@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="LaunchApp">Запустить Yaak</String>
+  <String Id="DowngradeErrorMessage">Более новая версия Yaak уже установлена.</String>
+  <String Id="PathEnvVarFeature">Добавить папку с Yaak в переменную PATH.</String>
+  <String Id="InstallAppFeature">Установить Yaak.</String>
+  <String Id="CreateDesktopShortcut">Создать ярлык на рабочем столе</String>
+</WixLocalization>
